@@ -4,8 +4,8 @@ for i in range(int(input())):
     left = 0
     check = True
     while left < n-1:
-        if nums[left] > nums[left=1]:
-            chek = False
+        if nums[left] > nums[left + 1]:
+            check = False
             break
         else:
             nums[left+1] -= nums[left]
