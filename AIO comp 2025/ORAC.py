@@ -1,29 +1,14 @@
 n = int(input())
-d = sorted(map(int, input().split()))
-lo = max(d)
-hi = lo + n
-while lo < hi:
-    mid = ((lo + hi) // 2)
-    i = n - 1
-    if d[i] > mid:
-        lo = mid + 1
-        continue
-    i -= 1
-    k = mid - 1
-    ok = True
-    while k > 0 and i >= 0:
-        for _ in (0, 1):
-            if i < 0: break
-            if d[i] <= k:
-                i -= 1
-            else:
-                ok = False
-                break
-        if not ok: break
-        k -= 1
-    if i >= 0: ok = False
-    if ok:
-        hi = mid
-    else:
-        lo = mid + 1
-print(lo)
+d = list(map(int, input().split()))
+maxD = max(d)
+freq = [0]*(maxD+1)
+for problem in d:
+    freq[problem] += 1
+ans = 0
+Ni = 0
+for i in range(maxD, 0, -1):
+    Ni += freq[i]
+    candidate = (Ni // 2) +1
+    if candidate > ans:
+        ans = candidate
+print(ans)
